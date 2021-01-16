@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     let naviButton = UIButton(frame: CGRect(x: 100, y: 300, width: 100, height: 100))
     let pagerbutton = UIButton(frame: CGRect(x: 220, y: 300, width: 100, height: 100))
+    let toLoginButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         view.addSubview(button)
         view.addSubview(naviButton)
         view.addSubview(pagerbutton)
+        view.addSubview(toLoginButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +50,18 @@ class ViewController: UIViewController {
         pagerbutton.setTitle("サンプル２", for: .normal)
         pagerbutton.backgroundColor = .red
         pagerbutton.addTarget(self, action: #selector(presentThird), for: .touchUpInside)
-
+        
+        toLoginButton.setTitle("ログイン画面へ", for: .normal)
+        toLoginButton.backgroundColor = .orange
+        toLoginButton.addTarget(self, action: #selector(presentLogin), for: .touchUpInside)
+        toLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            toLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            toLoginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            toLoginButton.widthAnchor.constraint(equalToConstant: toLoginButton.intrinsicContentSize.width),
+            toLoginButton.heightAnchor.constraint(equalToConstant: toLoginButton.intrinsicContentSize.height)
+            
+        ])
         
     }
     
@@ -76,5 +89,13 @@ class ViewController: UIViewController {
     func update() {
         valueLabel.text = String(state.getHasPurchase())
     }
+    
+    @objc
+    func presentLogin() {
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
+    }
+    
 }
 
