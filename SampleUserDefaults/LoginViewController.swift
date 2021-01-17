@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         textView.isScrollEnabled = false
         textView.text = "サンプル説明\nぐるぐるぐるぐる\nグルコサミン"
+        textView.font = UIFont.systemFont(ofSize: 25)
         textView.backgroundColor = .yellow
         textView.isSelectable = false
         topButton.setTitle("ログインへ", for: .normal)
@@ -44,7 +45,8 @@ class LoginViewController: UIViewController {
         rootStackView.distribution = .fillProportionally
         rootStackView.spacing = 40
         subStackView.axis = .horizontal
-        subStackView.distribution = .fillProportionally
+        subStackView.alignment = .fill
+        subStackView.distribution = .fillEqually
         
         view.addSubview(rootStackView)
         rootStackView.addArrangedSubview(textView)
@@ -68,8 +70,8 @@ class LoginViewController: UIViewController {
         ])
         subStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            subStackView.widthAnchor.constraint(equalToConstant: rootStackView.bounds.size.width),
-            subStackView.leadingAnchor.constraint(equalTo: rootStackView.leadingAnchor),
+//            subStackView.widthAnchor.constraint(equalToConstant: rootStackView.bounds.size.width),
+//            subStackView.leadingAnchor.constraint(equalTo: rootStackView.leadingAnchor),
         ])
         topButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -82,13 +84,16 @@ class LoginViewController: UIViewController {
         leftBorderLineView.translatesAutoresizingMaskIntoConstraints = false
         rightBorderLineView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            leftBorderLineView.leadingAnchor.constraint(equalTo: subStackView.leadingAnchor, constant: 10),
-            leftBorderLineView.trailingAnchor.constraint(equalTo: memoLabel.leadingAnchor),
-            memoLabel.trailingAnchor.constraint(equalTo: rightBorderLineView.leadingAnchor),
-            rightBorderLineView.trailingAnchor.constraint(equalTo: subStackView.trailingAnchor, constant: 10)
+//            leftBorderLineView.leadingAnchor.constraint(equalTo: subStackView.leadingAnchor, constant: 10),
+//            leftBorderLineView.trailingAnchor.constraint(equalTo: memoLabel.leadingAnchor),
+//            memoLabel.trailingAnchor.constraint(equalTo: rightBorderLineView.leadingAnchor),
+//            rightBorderLineView.trailingAnchor.constraint(equalTo: subStackView.trailingAnchor, constant: 10)
         ])
         
         bottomButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bottomButton.widthAnchor.constraint(equalToConstant: view.bounds.size.width * 0.8),
+        ])
         
     }
     
@@ -97,7 +102,7 @@ class LoginViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             rootStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.safeAreaInsets.top),
-            rootStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.safeAreaInsets.bottom),
+            rootStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.safeAreaInsets.bottom-view.bounds.size.height * 1/4),
         ])
     }
     
