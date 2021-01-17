@@ -26,7 +26,7 @@ class BorderLineView: UIView {
         path.addLine(to: CGPoint(x: self.bounds.maxX, y: self.bounds.midY)) //　終点
         path.close()
         UIColor.black.setStroke()
-        path.lineWidth = 10
+        path.lineWidth = 1
         path.stroke()       // 描画
     }
 

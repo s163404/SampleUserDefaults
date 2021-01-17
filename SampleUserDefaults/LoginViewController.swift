@@ -34,7 +34,9 @@ class LoginViewController: UIViewController {
         topButton.layer.cornerRadius = 20
         topButton.backgroundColor = .link
         memoLabel.text = "または"
+        memoLabel.font = UIFont.systemFont(ofSize: 20)
         memoLabel.backgroundColor = .lightGray
+        memoLabel.backgroundColor = .white
         descLabel.text = "アカウントをお持ちでない"
         descLabel.backgroundColor = .lightGray
         bottomButton.setTitle("新規登録", for: .normal)
@@ -46,7 +48,8 @@ class LoginViewController: UIViewController {
         rootStackView.spacing = 40
         subStackView.axis = .horizontal
         subStackView.alignment = .fill
-        subStackView.distribution = .fillEqually
+        subStackView.spacing = 10
+        subStackView.distribution = .fillProportionally
         
         view.addSubview(rootStackView)
         rootStackView.addArrangedSubview(textView)
@@ -79,15 +82,13 @@ class LoginViewController: UIViewController {
             topButton.widthAnchor.constraint(equalToConstant: view.bounds.size.width * 0.8)
         ])
 
-        
-        memoLabel.translatesAutoresizingMaskIntoConstraints = false
         leftBorderLineView.translatesAutoresizingMaskIntoConstraints = false
         rightBorderLineView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            leftBorderLineView.leadingAnchor.constraint(equalTo: subStackView.leadingAnchor, constant: 10),
-//            leftBorderLineView.trailingAnchor.constraint(equalTo: memoLabel.leadingAnchor),
-//            memoLabel.trailingAnchor.constraint(equalTo: rightBorderLineView.leadingAnchor),
-//            rightBorderLineView.trailingAnchor.constraint(equalTo: subStackView.trailingAnchor, constant: 10)
+            leftBorderLineView.widthAnchor.constraint(equalToConstant: view.bounds.size.width * 1/5),
+            rightBorderLineView.widthAnchor.constraint(equalToConstant: view.bounds.size.width * 1/5),
+            memoLabel.widthAnchor.constraint(equalToConstant: memoLabel.intrinsicContentSize.width)
+            
         ])
         
         bottomButton.translatesAutoresizingMaskIntoConstraints = false
@@ -111,6 +112,7 @@ class LoginViewController: UIViewController {
         
         print(textView.intrinsicContentSize)
         print(topButton.intrinsicContentSize)
+        print(rootStackView.bounds.size.width)
     }
 
 }
