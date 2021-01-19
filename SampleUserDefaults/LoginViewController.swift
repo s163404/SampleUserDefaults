@@ -73,6 +73,7 @@ class LoginViewController: UIViewController {
         ])
         subStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            subStackView.heightAnchor.constraint(equalToConstant: view.bounds.size.height * 1/3)
 //            subStackView.widthAnchor.constraint(equalToConstant: rootStackView.bounds.size.width),
 //            subStackView.leadingAnchor.constraint(equalTo: rootStackView.leadingAnchor),
         ])
