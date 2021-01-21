@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     let naviButton = UIButton(frame: CGRect(x: 100, y: 300, width: 100, height: 100))
     let pagerbutton = UIButton(frame: CGRect(x: 220, y: 300, width: 100, height: 100))
     let toLoginButton = UIButton()
+    let toTableViewButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class ViewController: UIViewController {
         view.addSubview(naviButton)
         view.addSubview(pagerbutton)
         view.addSubview(toLoginButton)
+        view.addSubview(toTableViewButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +65,19 @@ class ViewController: UIViewController {
             
         ])
         
+        toTableViewButton.setTitle("テーブルビュー画面へ", for: .normal)
+        toTableViewButton.backgroundColor = .orange
+        toTableViewButton.addTarget(self, action: #selector(presentTableView), for: .touchUpInside)
+        toTableViewButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            toTableViewButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            toTableViewButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            toTableViewButton.topAnchor.constraint(equalTo: toLoginButton.bottomAnchor),
+            toTableViewButton.widthAnchor.constraint(equalToConstant: toTableViewButton.intrinsicContentSize.width),
+            toTableViewButton.heightAnchor.constraint(equalToConstant: toTableViewButton.intrinsicContentSize.height)
+            
+        ])
+        
     }
     
     @objc
@@ -93,6 +108,13 @@ class ViewController: UIViewController {
     @objc
     func presentLogin() {
         let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
+    }
+    
+    @objc
+    func presentTableView() {
+        let vc = TableViewController(style: .grouped)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false)
     }

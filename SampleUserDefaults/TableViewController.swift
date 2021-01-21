@@ -10,33 +10,73 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    let cellIdentifier = "cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 2
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        var text = ""
+        
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                text = "碇シンジ"
+            case 1:
+                text = "渚カヲル"
+            default:
+                break
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                text = "式波・アスカ・ラングレー"
+            case 1:
+                text = "真希波・マリ・イラストリアス"
+            default:
+                break
+            }
+        default:
+            break
+        }
+        
+        cell.textLabel?.text = text
         // Configure the cell...
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "NERV"
+        case 1:
+            return "WILLE"
+        default:
+            return "戦略自衛隊"
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
