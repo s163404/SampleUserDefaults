@@ -12,6 +12,54 @@ class TableViewController: UITableViewController {
 
     let cellIdentifier = "cell"
     
+    class HeaderView: UIView {
+        var label: UILabel
+        var imageView: UIImageView
+        
+        static let headerHeight: CGFloat = 350
+        
+        override init(frame: CGRect) {
+            label = UILabel()
+            let image = UIImage(named: "cassette_tape")
+            imageView = UIImageView(image: image)
+            super.init(frame: frame)
+            self.bounds.size.height = HeaderView.headerHeight
+            
+
+            label.text = "エヴァンゲリオンの登場人物"
+            label.font = UIFont.systemFont(ofSize: 25, weight: .heavy)
+            label.textAlignment = .center
+            label.numberOfLines = 0
+            label.layer.borderWidth = 2
+            imageView.contentMode = .scaleAspectFit
+            imageView.layer.borderWidth = 2
+            
+            self.addSubview(label)
+            self.addSubview(imageView)
+            
+            label.translatesAutoresizingMaskIntoConstraints = false
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                label.topAnchor.constraint(equalTo: self.topAnchor),
+                label.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 4/5),
+                label.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1/3),
+                
+                imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                imageView.topAnchor.constraint(equalTo: label.bottomAnchor),
+                imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/5),
+                imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 2/3),
+            ])
+            
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+    
+    lazy var headerView = HeaderView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +70,7 @@ class TableViewController: UITableViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
+        view.addSubview(headerView)
     }
 
     // MARK: - Table view data source
@@ -76,6 +125,31 @@ class TableViewController: UITableViewController {
         default:
             return "戦略自衛隊"
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            return headerView
+        default:
+            return nil
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        var height = tableView.sectionHeaderHeight
+        switch section {
+        case 0:
+            height += HeaderView.headerHeight
+            return height
+        default:
+            // defaultのセクション高さ
+            return height
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
 
     /*
