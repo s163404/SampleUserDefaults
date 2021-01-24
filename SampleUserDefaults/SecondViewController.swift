@@ -16,6 +16,10 @@ class SecondViewController: UIViewController {
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
     
+    var imageView1: UIImageView!
+    var imageView2: UIImageView!
+    var imageView3: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,13 +41,14 @@ class SecondViewController: UIViewController {
         self.view.addSubview(scrollView)
         
         // scrollView上にUIImageViewをページ分追加する(今回は3ページ分)
-        let imageView1 = createImageView(x: 0, y: 0, width: self.view.frame.size.width, height: 200, image: "luffy")
+        imageView1 = self.createImageView(imageName: "luffy")
+        imageView2 = self.createImageView(imageName: "zoro")
+        imageView3 = self.createImageView(imageName: "nami")
+        imageView1.contentMode = .scaleAspectFit
+        imageView2.contentMode = .scaleAspectFit
+        imageView3.contentMode = .scaleAspectFit
         scrollView.addSubview(imageView1)
-        
-        let imageView2 = createImageView(x: self.view.frame.size.width, y: 0, width: self.view.frame.size.width, height: 200, image: "zoro")
         scrollView.addSubview(imageView2)
-        
-        let imageView3 = createImageView(x: self.view.frame.size.width*2, y: 0, width: self.view.frame.size.width, height: 200, image: "nami")
         scrollView.addSubview(imageView3)
         
         // pageControlの表示位置とサイズの設定
@@ -62,7 +67,12 @@ class SecondViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: x, y: y, width: width, height: height))
         let image = UIImage(named:  image)
         imageView.image = image
+        imageView.contentMode = .scaleAspectFit
         return imageView
+    }
+    
+    func createImageView(imageName: String) -> UIImageView {
+        return createImageView(x: 0, y: 0, width: 0, height: 0, image: imageName)
     }
 }
 
