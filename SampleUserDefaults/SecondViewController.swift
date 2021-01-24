@@ -21,6 +21,8 @@ class SecondViewController: UIViewController {
     var imageView2: UIImageView!
     var imageView3: UIImageView!
     
+    let button = UIButton()
+    
     /// 画面の長辺は高さかどうか
     var isHeightLongerThanWidth: Bool {
         get {
@@ -57,6 +59,23 @@ class SecondViewController: UIViewController {
         contentView.addSubview(imageView1)
         contentView.addSubview(imageView2)
         contentView.addSubview(imageView3)
+        
+        // pageControlの表示位置とサイズの設定
+        pageControl.numberOfPages = 3
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .black
+        pageControl.backgroundColor = .systemGray6
+        pageControl.isUserInteractionEnabled = true
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.addTarget(self, action: #selector(tapPageControl), for: .valueChanged)
+        self.view.addSubview(pageControl)
+
+        
+        button.setTitle("次へ", for: .normal)
+        button.backgroundColor = .link
+        button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(button)
         
         NSLayoutConstraint.activate([
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -99,21 +118,15 @@ class SecondViewController: UIViewController {
             imageView3.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             imageView3.leadingAnchor.constraint(equalTo: imageView2.trailingAnchor),
             imageView3.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-        ])
-        
-        // pageControlの表示位置とサイズの設定
-        pageControl.numberOfPages = 3
-        pageControl.pageIndicatorTintColor = .lightGray
-        pageControl.currentPageIndicatorTintColor = .black
-        pageControl.backgroundColor = .systemGray6
-        pageControl.isUserInteractionEnabled = true
-        pageControl.addTarget(self, action: #selector(tapPageControl), for: .valueChanged)
-        self.view.addSubview(pageControl)
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+
             pageControl.topAnchor.constraint(equalTo: scrollView.bottomAnchor),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.topAnchor.constraint(equalTo: pageControl.bottomAnchor),
         ])
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,6 +159,12 @@ class SecondViewController: UIViewController {
     func tapPageControl() {
         print(#function)
         // MEMO: - scrollView.setContentOffsetでスクロールする
+    }
+    
+    @objc
+    func tapButton() {
+        let nextVC = TextFieldViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

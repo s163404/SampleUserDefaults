@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66A5770E25BDA81A0021CFD1 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A5770D25BDA81A0021CFD1 /* TextFieldViewController.swift */; };
 		66E3D76C25AC6B2100174554 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D76B25AC6B2100174554 /* AppDelegate.swift */; };
 		66E3D76E25AC6B2100174554 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D76D25AC6B2100174554 /* SceneDelegate.swift */; };
 		66E3D77025AC6B2100174554 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3D76F25AC6B2100174554 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66A5770D25BDA81A0021CFD1 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
 		66E3D76825AC6B2100174554 /* SampleUserDefaults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleUserDefaults.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E3D76B25AC6B2100174554 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E3D76D25AC6B2100174554 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				66E3D79B25AC6B6900174554 /* State.swift */,
 				66E3D79D25ACA66E00174554 /* NavigationViewController.swift */,
 				66E3D79F25ACAA7400174554 /* SecondViewController.swift */,
+				66A5770D25BDA81A0021CFD1 /* TextFieldViewController.swift */,
 				66E3D7A125AF453100174554 /* ThirdViewController.swift */,
 				66E3D7A525B330EE00174554 /* LoginViewController.swift */,
 				66E3D7A325B2E85D00174554 /* BorderLineView.swift */,
@@ -287,6 +290,7 @@
 				66E3D77025AC6B2100174554 /* ViewController.swift in Sources */,
 				66E3D76C25AC6B2100174554 /* AppDelegate.swift in Sources */,
 				66E3D7A225AF453100174554 /* ThirdViewController.swift in Sources */,
+				66A5770E25BDA81A0021CFD1 /* TextFieldViewController.swift in Sources */,
 				66E3D76E25AC6B2100174554 /* SceneDelegate.swift in Sources */,
 				66E3D79E25ACA66E00174554 /* NavigationViewController.swift in Sources */,
 				66E3D79C25AC6B6900174554 /* State.swift in Sources */,
