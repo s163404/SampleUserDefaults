@@ -90,7 +90,7 @@ class ViewController: UIViewController {
     func presentNavi() {
         let secondVC = SecondViewController()
         let rootNavigationC = UINavigationController(rootViewController: secondVC)
-//        navigationController?.pushViewController(rootNavigationC, animated: true)
+        rootNavigationC.modalPresentationStyle = .fullScreen
         self.present(rootNavigationC, animated: true)
     }
     
